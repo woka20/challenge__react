@@ -19,7 +19,7 @@ const Profile = props =>{
        return(<div class= "class">
            <p>Nama:{nama} </p>
            <p>email:{email}</p>
-           <button onClick={signOut} >Sign Out</button>
+           <a href="/logout">Sign Out</a>
            </div>)
    }
     
