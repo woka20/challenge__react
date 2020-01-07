@@ -68,12 +68,13 @@ form{
 
 /* SIDEBAR==================================================================== */
 
-table{
+.table-terkini{
   margin-top:70px;
   margin-left: 100px;
   border: 1px solid grey;
   width: 400px;
-  height: 300px;
+
+  
 }
 
 .populer,.populer2{
@@ -90,11 +91,15 @@ table{
   border-radius: 50%;
   padding-left: 9px; 
   margin-left: 20px;
-
+  width: 375px;
 }
 
+.populer2{
+  width:400px;
+}
 .dataTable{
   margin-left: 60px;
+  width:400px;
 }
 
 .populer{
@@ -102,6 +107,11 @@ table{
 }
 
 /* HEADLINE===================================================================== */
+
+.headlineNews{
+   width: 100px;
+
+}
 
 #headline{
   margin-top:70px;
@@ -128,4 +138,9 @@ table{
   padding-left: 150px;
   padding-top: 10px;
   
+}
+
+.api-img{
+  width: 650px;
+  height:342px;
 }

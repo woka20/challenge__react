@@ -9,17 +9,17 @@ export class Headline extends React.Component{
         return  <div>
                    <table id="headline">
                        <tr class="row-head">
-                           <td class="data-head"><img src={Saskeh}/></td>
+                           <td class="data-head-img"><img class="api-img" src={this.props.img}/></td>
                        </tr>
                        <tr class="row-head">
-                           <td class="data-head"><h1>Kocaknya Iklan Kacang Mayasi yang Memarodikan Naruto Ini</h1> </td>
+                           <td class="data-head"><h1>{this.props.title}</h1> </td>
                        </tr>
                        <tr class="row-head">
-                           <td class="data-head"> Siapa yang tidak kenal dengan Naruto? Sosok ninja rekaan Masashi Kishimoto ini begitu digemari oleh jutaan penggemarnya di seluruh dunia. Berangkat dari fenomena ini,....</td>
+                           <td class="data-head">{this.props.desc}</td>
                        </tr>
                        <br/>
                        <tr class="row-head">
-                           <td class="data-head">Last update 13 mins ago</td>
+                           <td class="data-head">{this.props.published}</td>
                        </tr>
                        <br/>
                        <tr class="row-head">

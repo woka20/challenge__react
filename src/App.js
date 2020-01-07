@@ -4,6 +4,7 @@ import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MainPage from "./pages/MainPage"
+import News from "./components/News"
 
 class App extends Component{
   render(){
