@@ -1,29 +1,36 @@
-import {SideList} from "./ListSideBar"
+import {Headline} from "./Headline"
 
 import axios from "axios"
 import React from 'react'
 
-const API_KEY="c92b51632a1d41d0b0319657d21da15f"
+const API_KEY="44687f6f58184f6385947cb55a41ac62"
 const baseUrl="https://newsapi.org/v2/"
-const urlHeadline=baseUrl+"top-headlines?country=id&apiKey="+API_KEY;
 
 
-export class News extends React.Component{
+export class NewsSearch extends React.Component{
     constructor(props){
         super(props)
         this.state={
             listNews:[],
-            isLoading:true
+            isLoading:true,
+            keyword: "persib"
         }
     }
+    
+    // onChange =e=>{
+    //     console.log("HOOOOOOOOOOOOOOOOOOOOO",e.target.value)
+    //     this.setState({keyword: e.target.value})
+    // }
+
     componentDidMount = () =>{
 
         const self=this
         axios 
-        .get(urlHeadline)
+        .get(`https://newsapi.org/v2/everything?q=${this.state.keyword}&apiKey=`+API_KEY)
         .then(function(response){
             self.setState({listNews:response.data.articles, isLoading:false})
-            console.log(response)
+            console.log("APAAAAAAAAAAAA",response)
+
         })
         .catch(function(error){
             self.setState({isLoading:false})
@@ -31,17 +38,17 @@ export class News extends React.Component{
     }
     render(){
         const{listNews,isLoading}=this.state
-        console.log("HOYA",listNews)
-        const topHeadlines=listNews.filter(item =>{
+        console.log(listNews)
+        const everthingNews=listNews.filter(item =>{
             if (item.description != null && item.urlToImage != null){
                 return item
                 
             }
             return false
-        }).slice(0,20)
-        console.log("HOYA2",topHeadlines)
-        const headlineNews = topHeadlines.map((item,key) => {
-            return( <SideList 
+        }) 
+        
+        const AllNews = everthingNews.map((item,key) => {
+            return( <Headline 
                    key={key}
                    title={item.title}
                    img={item.urlToImage}
@@ -51,10 +58,10 @@ export class News extends React.Component{
                 />)
         })
 
-        return <div class="headlineNews">
-            {isLoading?<div style={{textAlign:"center"}}>Loading....</div>: headlineNews }
+        return <div class="AllNews">
+            {isLoading?<div style={{textAlign:"center"}}>Loading....</div>: AllNews }
              </div>
     }
 }
 
-export default News
+export default NewsSearch

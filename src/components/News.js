@@ -3,7 +3,7 @@ import {SideList} from "./ListSideBar"
 import axios from "axios"
 import React from 'react'
 
-const API_KEY="44687f6f58184f6385947cb55a41ac62"
+const API_KEY="c92b51632a1d41d0b0319657d21da15f"
 const baseUrl="https://newsapi.org/v2/"
 const urlHeadline=baseUrl+"top-headlines?country=id&apiKey="+API_KEY;
 
