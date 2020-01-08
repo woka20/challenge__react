@@ -1,6 +1,6 @@
-import {Headline} from "./Headline"
-import {NavBar} from "./Navbar"
-import {SideBar} from "./SideBar"
+import Headline from "./Headline"
+import NavBar from "./Navbar"
+import SideBar from "./SideBar"
 import {SearchBar} from "./Search"
 import axios from "axios"
 import React from 'react'
@@ -13,31 +13,18 @@ const API_KEY="c92b51632a1d41d0b0319657d21da15f"
 const baseUrl="https://newsapi.org/v2/"
 
 
-export class NewsAll extends React.Component{
-    // constructor(props){
-    //     super(props)
-    //     this.state={
-    //         listNews:[],
-    //         isLoading:true,
-    //         keyword: "Manchester United"
-    //     }
-    // }
-    state = {
-        listNews:[],
-        isLoading:true,
-        keyword: "Manchester United"
-    }
+class NewsAll extends React.Component{
     
     componentDidMount = () =>{
         const self=this
         axios 
-        .get(`https://newsapi.org/v2/everything?q=${this.state.keyword}&apiKey=`+API_KEY)
+        .get(`https://newsapi.org/v2/everything?q=${this.props.keyword}&apiKey=`+API_KEY)
         .then(function(response){
-            self.setState({listNews:response.data.articles, isLoading:false})
+            store.setState({listNews:response.data.articles, isLoading:false})
             console.log(response)
         })
         .catch(function(error){
-            self.setState({isLoading:false})
+            store.setState({isLoading:false})
         })
     }
 
@@ -45,17 +32,17 @@ export class NewsAll extends React.Component{
         console.warn(e.target.value)
         // this.props.handleInputChange(e.target.value)
         // this.props.cekAction()
-        console.warn('cek store value', this.props.keyword)
+        console.warn('cek store value', this.props)
+        console.warn('cek props value', this.props.slice)
         console.warn('cek state value', this.state)
-        console.warn('cek props value', this.props)
         // this.props.handleInputChange();
     }
     
         
     render(){
-        const{listNews,isLoading}=this.state
-        console.log(listNews)
-        const everthingNews=listNews.filter(item =>{
+        
+        console.log(this.props.listNews)
+        const everthingNews=this.props.listNews.filter(item =>{
             if (item.description != null && item.urlToImage != null){
                 return item
                 
@@ -73,7 +60,7 @@ export class NewsAll extends React.Component{
                           </div>
                               <div class="col-8">
                                   
-                               <p>Search: <input onChange={this.changeHandler} /></p>
+                               <p>Search: <input onChange={(e)=>this.props.handleInputChange(e)} /></p>
                               {everthingNews.map((item,key) =>(
                                   <Headline
                                   key={key}
@@ -94,4 +81,4 @@ export class NewsAll extends React.Component{
 
 
 
-export default connect("keyword", actions)(withRouter(NewsAll));
+export default connect("listNews, keyword, slice", actions)(withRouter(NewsAll));

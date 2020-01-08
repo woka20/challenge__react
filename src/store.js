@@ -17,9 +17,7 @@ export const store=createStore(initialState);
 
 export const actions = store => ({
   handleInputChange : async (state,event) => {
-    alert("KOL")
     console.log("event", event.target.value)
-    
     let keyword= event.target.value
     if (keyword.length > 2) {
       try {
@@ -31,9 +29,6 @@ export const actions = store => ({
         console.error(error);
       }
     }
-  },
-  cekAction : (state ) => {
-    console.warn('action is triggered!')
   }
 });
 
