@@ -5,10 +5,11 @@ import {Headline} from "../components/Headline"
 import {News} from "../components/News"
 import {NewsAll} from "../components/NewsAll"
 import {NewsSearch} from "../components/NewsSearch"
+import {CategoryNews} from "../pages/CategoryNews"
 
 class MainPage extends React.Component{
     render(){
-        return <NewsAll/>
+        return <CategoryNews/>
         // <div>
         //              <NavBar />
         //              <div class= "container-fluid">

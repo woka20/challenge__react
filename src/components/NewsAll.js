@@ -62,7 +62,7 @@ export class NewsAll extends React.Component{
         }) 
         return (
             <div>
-                     <NavBar/>
+                     <NavBar />
                       <div class= "container-fluid">
                           <div class="row">
                              <div class="col-4">

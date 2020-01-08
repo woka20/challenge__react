@@ -3,9 +3,10 @@ import React from 'react'
 
 export class Menubar extends React.Component{
     render(){
-        const lists=['Sepakbola', 'Ekonomi', 'Politik', 'Hiburan']
+        const lists=['sports','science', 'business']
+
         const NavLink=lists.map(list=>{
-            return  <li class="MenuNav"><a href={'/'+ list}>{list}</a></li>
+            return  <li class="MenuNav"><a onClick={()=>this.props.searchCategory(list)}>{list}</a></li>
         })
          return <ul class="upper">{NavLink}</ul> 
         
