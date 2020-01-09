@@ -60,7 +60,7 @@ class NewsAll extends React.Component{
                           </div>
                               <div class="col-8">
                                   
-                               <p>Search: <input onChange={(e)=>this.props.handleInputChange(e)} /></p>
+                               <p>Search: <input onChange={(e)=>this.changeHandler(e)} /></p>
                               {everthingNews.map((item,key) =>(
                                   <Headline
                                   key={key}

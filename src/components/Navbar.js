@@ -24,7 +24,7 @@ export class NavBar extends React.Component{
                 </div>
             </div>
         </header> 
-    
+       
     }
 
 }

@@ -1,38 +1,40 @@
 import React from 'react'
 import axios from 'axios'
+import {actions, store} from "../store"
+import { connect } from "unistore/react";
+import {withRouter} from 'react-router-dom'
 
 class SignIn extends React.Component{
     state={
-        name:"",
-        password:""
-    };
+        username:"", kataKunci:""
+    }
+
     changeInput= e =>{
-        this.setState({[e.target.name]: e.target.value})
-        console.log("KOL")
-    }; 
+        store.setState({[e.target.name]: e.target.value})
+        console.warn("KOL", this.props.api_key)
+    }
     postLogin = () => {
     
         const {name, password}=this.state;
         const data={ username: name,
         kataKunci: password};
-        
+
     
     const self=this
     axios 
     .post("https://woka20.free.beeceptor.com/signin", data)
-    .then(function(response){
+    .then((response)=>{
         if(response.data.hasOwnProperty('api_key')){
-            localStorage.setItem("api_key", response.data.api_key)
-            localStorage.setItem("isLogin", true)
-            localStorage.setItem("full_name", response.data.name)
-            localStorage.setItem("email", response.data.email)
+            store.setState({api_key:response.data.api_key, isLogin: true, name: response.data.name,email:response.data.email})
+            // console.warn("KOL2", this.props.api_key)
         }
+        console.log("KOL2", this.props.api_key)
         
         self.props.history.push("/profile")
     })
     .catch(function(error){
         alert("SALAH")
-        console.log(error)
+        
     })
 
 };
@@ -66,4 +68,5 @@ class SignIn extends React.Component{
    
 }
 
-export default SignIn
+
+export default connect("api_key, name, email, isLogin, password", actions)(withRouter(SignIn));

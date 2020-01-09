@@ -2,10 +2,15 @@ import createStore from 'unistore'
 import axios from 'axios'
 
 const initialState = {
+   api_key:"298765",
+   name:"woka",
+   password:"apa",
+   email:"woka@email.com",
    listNews:[],
    isLoading:true,
    keyword: "test",
-   slice:5  
+   slice:5,
+   isLogin:true  
   };
 
 
@@ -29,6 +34,8 @@ export const actions = store => ({
         console.error(error);
       }
     }
-  }
+  },
+  
+  
 });
 
